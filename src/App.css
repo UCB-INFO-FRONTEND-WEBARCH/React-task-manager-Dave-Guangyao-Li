@@ -52,6 +52,11 @@ a:hover {
 
 /* navigation bar part */
 
+/*close menu */
+.close-menu {
+  display: none;
+}
+
 .navigation {
   background-color: #dc4c3e;
   color: #ffffff;
@@ -63,6 +68,10 @@ a:hover {
 
 #menu-icon {
   margin-right: 10px;
+}
+
+#menu-icon:hover {
+  cursor: pointer;
 }
 
 .search-area {

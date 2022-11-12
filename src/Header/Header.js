@@ -1,9 +1,14 @@
 
 function Header() {
+    function toggleMenu() {
+        document.querySelector(".left-navigation").classList.toggle("close-menu");
+    }
+
+
     return (
         <nav class="navigation grid-item-navbar">
             <div class="search-area">
-                <span id="menu-icon" class="material-icons">menu</span>
+                <span id="menu-icon" class="material-icons" onClick={toggleMenu}>menu</span>
                 <div id="input-container">
                     <span id="search-icon" class="material-icons">search</span>
                     <input

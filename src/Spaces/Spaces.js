@@ -1,4 +1,17 @@
 function Spaces() {
+
+    function collapseItems(event) {
+        const collapsable = document.querySelector(".collapsable");
+        if (collapsable.style.display === "none") {
+            collapsable.style.display = "block";
+        } else {
+            collapsable.style.display = "none";
+        }
+
+        event.preventDefault();
+    }
+
+
     return (
         <aside class="left-navigation grid-item-left-nav">
             <div class="left-nav-body">
@@ -22,7 +35,7 @@ function Spaces() {
                         <span ><a href="#">Projects</a></span>
                     </li>
 
-                    <div class="nav-item-work">
+                    <div class="nav-item-work" onClick={collapseItems}>
                         <li class="left-nav-item" >
                             <span class="material-icons">circle</span>
                             <span id="work-item"><a href="#">work</a></span>
