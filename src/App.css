@@ -1,3 +1,207 @@
-.App {
-  text-align: center;
+/* This is your CSS files */
+*,
+*::before,
+*::after {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* grid layout */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+
+.grid-item-navbar {
+  grid-column: 1 / span 3;
+  width: 100%;
+}
+
+.grid-item-left-nav {
+  grid-column: 1 / span 1;
+  background-color: #fefbf2;
+  width: 450px;
+}
+
+.grid-item-main-nav {
+  grid-column: 2 / span 2;
+  min-width: 200px;
+}
+
+
+/* navigation bar part */
+
+.navigation {
+  background-color: #dc4c3e;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#menu-icon {
+  margin-right: 10px;
+}
+
+.search-area {
+  padding-left: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.search-area input {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: rgba(179, 160, 160, 0.65);
+  color: #ffffff;
+  width: 200px;
+}
+
+
+#input-container {
+  position: relative;
+}
+
+#input-container>span {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+}
+
+#input-container>input {
+  padding-left: 40px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+
+#check-icon {
+  margin-right: 10px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ffffff;
+  opacity: 0.7;
+  /* Firefox */
+}
+
+
+/* left navigation part */
+.left-nav-item a {
+  color: #000000;
+}
+
+.left-nav-item span {
+  vertical-align: middle;
+}
+
+ul li {
+  list-style: none;
+  padding: 10px 10px;
+  border-bottom: 11px solid #fefbf2;
+}
+
+.collapsable {
+  padding-left: 50px;
+}
+
+#add-project a {
+  color: #7e7d79;
+}
+
+#add-icon {
+  color: #dc4c3e;
+}
+
+.task-count {
+  color: #7e7d79;
+  padding-left: 5px;
+}
+
+#item-projects {
+  border-bottom: 1px solid lightgrey;
+}
+
+/* main navigation part */
+
+main {
+  padding: 0;
+  margin: 0;
+}
+
+.main-navigation h1 {
+  font-size: 20px;
+}
+
+#add-task a {
+  color: #7e7d79;
+}
+
+.tasks {
+  padding: 50px 80px;
+}
+
+.task {
+  padding: 10px 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+[type="checkbox"] {
+  width: 1.5em;
+  height: 1.5em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid black;
+  appearance: none;
+  outline: none;
+}
+
+[type="checkbox"]:checked {
+  background-color: rgba(241, 176, 176, 0.4);
+  border: 1px solid #dc4c3e;
+  box-shadow: 0 0 0 1px #dc4c3e;
+}
+
+[type="checkbox"]:checked+label {
+  text-decoration: #7e7d79 line-through;
+  color: #7e7d79;
+}
+
+.task:last-child {
+  border-bottom: none;
+}
+
+.task span {
+  vertical-align: middle;
 }
