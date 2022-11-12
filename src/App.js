@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+// You should be able to add tasks in each space
+
+import Header from "./Header/Header";
+import Spaces from "./Spaces/Spaces";
+import Tasks from "./Tasks/Tasks";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <Spaces></Spaces>
+      <Tasks></Tasks>
     </div>
   );
 }
