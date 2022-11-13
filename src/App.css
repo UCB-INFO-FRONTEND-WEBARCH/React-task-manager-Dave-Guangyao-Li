@@ -217,13 +217,13 @@ main {
   outline: none;
 }
 
-[type="checkbox"]:checked {
+.completed {
   background-color: rgba(241, 176, 176, 0.4);
   border: 1px solid #dc4c3e;
   box-shadow: 0 0 0 1px #dc4c3e;
 }
 
-[type="checkbox"]:checked+label {
+.completed+label {
   text-decoration: #7e7d79 line-through;
   color: #7e7d79;
 }

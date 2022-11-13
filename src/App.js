@@ -30,6 +30,8 @@ function App() {
       // store data in local storage
       localStorage.setItem("tasks", JSON.stringify(taskObject));
     }
+    // setTasks(taskObject);
+    // setFilteredItems(taskObject);
 
   }, []); // empty array means this effect will only run once
 

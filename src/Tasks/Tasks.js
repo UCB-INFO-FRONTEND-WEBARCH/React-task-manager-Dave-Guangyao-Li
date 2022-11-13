@@ -10,15 +10,12 @@ function Tasks() {
         // change the completion state of the task
         // console.log(e.target.id);
         const updatedData = {
-            ...tasks,
-            [category]: tasks[category].map(item => {
+            ...filteredItems,
+            [category]: filteredItems[category].map(item => {
                 console.log(typeof item.id);
                 console.log(typeof e.target.id);
                 if (Number(item.id) === Number(e.target.id)) {
-                    return {
-                        ...item,
-                        completed: !item.completed
-                    }
+                    item.completed = !item.completed;
                 }
                 return item;
             })
