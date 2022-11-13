@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { taskContext } from "../App";
+import { taskObject } from '../tasksData';
+
 function Spaces() {
+
+    const { category, setCategory, tasks, setTasks } = useContext(taskContext);
 
     function collapseItems(event) {
         const collapsable = document.querySelector(".collapsable");
@@ -12,23 +18,39 @@ function Spaces() {
     }
 
 
+    function changeCategory(event) {
+
+        //set category and reset all tasks
+        // setTasks({ ...taskObject });
+        setCategory(event.target.id);
+
+
+    }
+
     return (
         <aside class="left-navigation grid-item-left-nav">
             <div class="left-nav-body">
                 <ul class="nav-items">
                     <li class="left-nav-item" >
                         <span class="material-icons">inbox</span>
-                        <span><a href="#">Home</a></span>
+                        <span id="inbox" onClick={(e) => {
+                            changeCategory(e);
+                        }}>Inbox</span>
                         <span class="task-count">5</span>
                     </li>
                     <li class="left-nav-item">
                         <span class="material-icons">today</span>
-                        <span><a href="#">Today</a></span>
+                        <span id="today" onClick={(e) => {
+                            changeCategory(e);
+                        }}>Today</span>
                         <span class="task-count">5</span>
                     </li>
                     <li class="left-nav-item">
                         <span class="material-icons">upcoming</span>
-                        <span><a href="#">Upcoming</a></span>
+                        <span id="upcoming" onClick={(e) => {
+                            changeCategory(e);
+                        }}>Upcoming</span>
+                        <span class="task-count">5</span>
                     </li>
                     <li id="item-projects" class="left-nav-item">
                         <span class="material-icons">expand_more</span>

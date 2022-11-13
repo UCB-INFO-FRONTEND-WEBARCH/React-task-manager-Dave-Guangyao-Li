@@ -126,6 +126,18 @@ a:hover {
 
 
 /* left navigation part */
+#inbox:hover {
+  cursor: pointer;
+}
+
+#today:hover {
+  cursor: pointer;
+}
+
+#upcoming:hover {
+  cursor: pointer;
+}
+
 .left-nav-item a {
   color: #000000;
 }

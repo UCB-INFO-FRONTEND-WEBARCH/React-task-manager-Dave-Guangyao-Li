@@ -1,8 +1,33 @@
 
+import { useContext, useEffect, useState } from "react";
+import { taskContext } from "../App.js";
+
+
 function Header() {
     function toggleMenu() {
-        document.querySelector(".left-navigation").classList.toggle("close-menu");
+        setShowNav(!showNav);
     }
+
+    const { showNav, setShowNav, tasks, setTasks, category, setCategory, searchTerm, setSearchTerm, filteredItems, setFilteredItems } = useContext(taskContext);
+
+
+
+    // useEffect to use new state. set search term no lagging
+    useEffect(() => {
+        if (searchTerm.length > 0) {
+            // from the tasks that are visible only
+            setFilteredItems({
+                ...tasks,
+                [category]: tasks[category].filter(task => task.task.toLowerCase().includes(searchTerm.toLowerCase()))
+            });
+        } else {
+            setFilteredItems({
+                ...tasks
+            })
+        }
+    }, [category, searchTerm, setFilteredItems, setSearchTerm, tasks]);
+
+
 
 
     return (
@@ -12,10 +37,12 @@ function Header() {
                 <div id="input-container">
                     <span id="search-icon" class="material-icons">search</span>
                     <input
-                        type="text"
+                        type="search"
                         class="quick-find"
                         placeholder="Quick Find"
                         aria-label="quick-find"
+                        value={searchTerm}
+                        onChange={e => setSearchTerm(e.target.value)}
                     />
                 </div>
             </div>
