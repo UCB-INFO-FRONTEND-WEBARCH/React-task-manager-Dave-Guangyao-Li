@@ -6,12 +6,34 @@ function Tasks() {
     // map tasks
     const { tasks, setTasks, category, filteredItems, setFilteredItems } = useContext(taskContext);
 
+    const changeCompletionState = (e) => {
+        // change the completion state of the task
+        // console.log(e.target.id);
+        const updatedData = {
+            ...tasks,
+            [category]: tasks[category].map(item => {
+                console.log(typeof item.id);
+                console.log(typeof e.target.id);
+                if (Number(item.id) === Number(e.target.id)) {
+                    return {
+                        ...item,
+                        completed: !item.completed
+                    }
+                }
+                return item;
+            })
+        }
+        setFilteredItems(updatedData);
+
+        // store to local storage
+        localStorage.setItem("tasks", JSON.stringify(filteredItems));
+        console.log(localStorage.getItem("tasks"));
+    }
 
 
     return (
 
         <main class="main-navigaton grid-item-main-nav">
-            <div>show tasks</div>
             <ul class="tasks">
                 <h1 class="list-title">Inbox</h1>
 
@@ -20,11 +42,12 @@ function Tasks() {
                     filteredItems[category].map((task, index) => {
                         return (
                             <li class="task" key={index}>
-                                <input type="checkbox" id={`task-${index}`} />
-                                <label for={`task-${index}`}>{task.task}</label>
+                                <input type="checkbox" id={task.id} className={task.completed ? "completed" : "incomplete"} onClick={changeCompletionState} />
+                                <label for={task.id}>{task.task}</label>
                             </li>
                         );
-                    })}
+                    })
+                }
 
 
 

@@ -30,6 +30,7 @@ a:hover {
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
+
 }
 
 
@@ -41,12 +42,15 @@ a:hover {
 .grid-item-left-nav {
   grid-column: 1 / span 1;
   background-color: #fefbf2;
-  width: 450px;
+  width: 400px;
+  height: 100vh;
+  padding: 20px;
 }
 
 .grid-item-main-nav {
   grid-column: 2 / span 2;
   min-width: 200px;
+  height: 100vh;
 }
 
 
@@ -138,6 +142,11 @@ a:hover {
   cursor: pointer;
 }
 
+#add-project {
+  cursor: pointer;
+
+}
+
 .left-nav-item a {
   color: #000000;
 }
@@ -184,8 +193,8 @@ main {
   font-size: 20px;
 }
 
-#add-task a {
-  color: #7e7d79;
+#add-task:hover {
+  cursor: pointer;
 }
 
 .tasks {

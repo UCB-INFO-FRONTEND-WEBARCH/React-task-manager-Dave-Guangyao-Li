@@ -20,14 +20,16 @@ function App() {
 
 
   useEffect(() => {
-    // fetch data 
-    // const tasksData = JSON.parse(localStorage.getItem("tasks"));
-    // const incompleteTasksData = JSON.parse(localStorage.getItem("incompleteTasks"));
-    // const categoryData = JSON.parse(localStorage.getItem("category"));
-    // const searchTermData = JSON.parse(localStorage.getItem("searchTerm"));
-    setTasks(taskObject);
-    setFilteredItems(taskObject);
-    // console.log(localStorage.getItem("tasks"));
+    // fetch data from local storage
+    if (localStorage.getItem("tasks")) {
+      setTasks(JSON.parse(localStorage.getItem("tasks")));
+      setFilteredItems(JSON.parse(localStorage.getItem("tasks")));
+    } else {
+      setTasks(taskObject);
+      setFilteredItems(taskObject);
+      // store data in local storage
+      localStorage.setItem("tasks", JSON.stringify(taskObject));
+    }
 
   }, []); // empty array means this effect will only run once
 
@@ -36,17 +38,11 @@ function App() {
   useEffect(() => {
     // filter out the completed tasks
     setIncompleteTasks({
-      inbox: tasks.inbox.filter(task => !task.completed).length,
-      today: tasks.today.filter(task => !task.completed).length,
-      upcoming: tasks.upcoming.filter(task => !task.completed).length,
+      inbox: filteredItems.inbox.filter(task => !task.completed).length,
+      today: filteredItems.today.filter(task => !task.completed).length,
+      upcoming: filteredItems.upcoming.filter(task => !task.completed).length,
     });
-  }, [])
-
-  // set search term
-  useEffect(() => {
-    setSearchTerm(searchTerm);
-  }, [searchTerm]);
-
+  }, [filteredItems]);
 
 
   return (
