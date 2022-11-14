@@ -8,7 +8,13 @@ function Header() {
         setShowNav(!showNav);
     }
 
-    const { showNav, setShowNav, tasks, setTasks, category, setCategory, searchTerm, setSearchTerm, filteredItems, setFilteredItems } = useContext(taskContext);
+    const { showNav, setShowNav,
+        tasks, setTasks,
+        category, setCategory,
+        searchTerm, setSearchTerm,
+        filteredItems, setFilteredItems,
+        incompleteTasks, setIncompleteTasks
+    } = useContext(taskContext);
 
 
 
@@ -28,6 +34,14 @@ function Header() {
     }, [category, searchTerm, setFilteredItems, setSearchTerm, tasks]);
 
 
+    // count the number of total incomplete tasks of all categories
+    const countTotalIncompleteTasks = () => {
+        let total = 0;
+        for (let key in incompleteTasks) {
+            total += incompleteTasks[key];
+        }
+        return total;
+    }
 
 
     return (
@@ -49,7 +63,9 @@ function Header() {
 
             <div class="check-item">
                 <span id="check-icon" class="material-icons">check_circle</span>
-                <span id="task-count">30/5</span>
+                {/* [total number of tasks that have not been completed] / [total number of tasks that have not been completed in the selected space]
+ */}
+                <span id="task-count">{countTotalIncompleteTasks()}/{incompleteTasks[category]}</span>
             </div>
 
         </nav>
