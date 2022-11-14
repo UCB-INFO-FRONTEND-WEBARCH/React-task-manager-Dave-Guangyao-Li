@@ -121,7 +121,8 @@ a:hover {
   margin-right: 10px;
 }
 
-::placeholder {
+/* change placeholder color */
+[type="search"]::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #ffffff;
   opacity: 0.7;
@@ -158,8 +159,9 @@ a:hover {
 ul li {
   list-style: none;
   padding: 10px 10px;
-  border-bottom: 11px solid #fefbf2;
 }
+
+
 
 .collapsable {
   padding-left: 50px;
@@ -210,7 +212,7 @@ main {
   width: 1.5em;
   height: 1.5em;
   background-color: white;
-  border-radius: 50%;
+  border-radius: 100%;
   vertical-align: middle;
   border: 1px solid black;
   appearance: none;
@@ -223,7 +225,7 @@ main {
   box-shadow: 0 0 0 1px #dc4c3e;
 }
 
-.completed+label {
+.completed+input {
   text-decoration: #7e7d79 line-through;
   color: #7e7d79;
 }
@@ -234,4 +236,37 @@ main {
 
 .task span {
   vertical-align: middle;
+}
+
+/* input text field has no border */
+
+.new-task {
+  position: relative;
+}
+
+.new-task>span {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+}
+
+#add-icon:hover {
+  cursor: pointer;
+}
+
+
+.new-task>input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  padding-left: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.edit-task {
+  border: none;
+  outline: none;
+  width: 90%;
 }

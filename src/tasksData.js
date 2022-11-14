@@ -28,12 +28,12 @@ export const taskObject = {
 
     today: [
         {
-            "id": 4,
+            "id": 1,
             "task": "Buy the new album by Rake",
             "completed": false
         },
         {
-            "id": 5,
+            "id": 2,
             "task": "Buy a gift card for Dad",
             "completed": false
         },
@@ -42,12 +42,12 @@ export const taskObject = {
 
     upcoming: [
         {
-            "id": 6,
+            "id": 1,
             "task": "upcoming task 1",
             "completed": false
         },
         {
-            "id": 7,
+            "id": 2,
             "task": "upcoming task 2",
             "completed": false
         },

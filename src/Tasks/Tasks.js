@@ -12,8 +12,8 @@ function Tasks() {
         const updatedData = {
             ...filteredItems,
             [category]: filteredItems[category].map(item => {
-                console.log(typeof item.id);
-                console.log(typeof e.target.id);
+                // console.log(typeof item.id);
+                // console.log(typeof e.target.id);
                 if (Number(item.id) === Number(e.target.id)) {
                     item.completed = !item.completed;
                 }
@@ -22,11 +22,71 @@ function Tasks() {
         }
         setFilteredItems(updatedData);
 
+
         // store to local storage
-        localStorage.setItem("tasks", JSON.stringify(filteredItems));
+        localStorage.setItem("tasks", JSON.stringify(updatedData));
         console.log(localStorage.getItem("tasks"));
     }
 
+    const addNewTask = (e) => {
+        // add new task items into filteredItems list and return a new input field on page
+        const taskText = e.target.value;
+        const newTask = {
+            id: filteredItems[category].length + 1,
+            task: taskText,
+            completed: false
+        }
+        const updatedData = {
+            ...filteredItems,
+            [category]: [...filteredItems[category], newTask]
+        }
+        // set the new task to the filteredItems
+        setFilteredItems(updatedData);
+        setTasks(updatedData);
+
+        // store to local storage
+        localStorage.setItem("tasks", JSON.stringify(updatedData));
+
+    }
+
+    const editTask = (e) => {
+        // edit the task
+        const updatedData = {
+            ...filteredItems,
+            [category]: filteredItems[category].map(item => {
+                if (Number(item.id) === Number(e.target.id)) {
+                    item.task = e.target.value;
+                }
+                return item;
+            })
+        }
+        setTasks(updatedData);
+        setFilteredItems(updatedData);
+
+        // store to local storage
+        localStorage.setItem("tasks", JSON.stringify(updatedData));
+    }
+
+    const deleteTask = (e) => {
+        //remove item from local storage
+        console.log(localStorage.getItem("tasks"));
+        localStorage.removeItem("tasks");
+        // console.log(localStorage.getItem("tasks"));
+        // delete the task
+        const updatedData = {
+            ...filteredItems,
+            [category]: filteredItems[category].filter(item => {
+                return Number(item.id) !== Number(e.target.id);
+            })
+        }
+        setTasks(updatedData);
+        setFilteredItems(updatedData);
+
+
+        // store to local storage
+        localStorage.setItem("tasks", JSON.stringify(updatedData));
+        console.log(localStorage.getItem("tasks"));
+    }
 
     return (
 
@@ -35,26 +95,37 @@ function Tasks() {
                 <h1 class="list-title">Inbox</h1>
 
                 {
-                    // list all filtered tasks
+                    // list all filtered tasks of the current category
                     filteredItems[category].map((task, index) => {
                         return (
                             <li class="task" key={index}>
                                 <input type="checkbox" id={task.id} className={task.completed ? "completed" : "incomplete"} onClick={changeCompletionState} />
-                                <label for={task.id}>{task.task}</label>
+                                {/* <label for={task.id}>{task.task}</label> */}
+                                {/* <div className="task-detail"> */}
+                                <input type="text" id={task.id} className="edit-task" value={task.task} onChange={editTask} />
+                                <span id={task.id} className="material-icons delete-task" onClick={deleteTask}>delete</span>
+                                {/* </div> */}
+
                             </li>
                         );
                     })
                 }
 
-
-
-                <li class="task" >
+                <li class="new-task" >
                     <span id="add-icon" class="material-icons">add</span>
-                    <span id="add-task">Add task</span>
+                    <input type="text"
+                        id="add-task"
+                        class="add-task"
+                        placeholder="Add task"
+                        aria-label="add task"
+                        onClick={addNewTask}
+                        autoFocus
+                    >
+                    </input>
                 </li>
 
             </ul>
-        </main>
+        </main >
     );
 }
 export default Tasks;

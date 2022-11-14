@@ -10,8 +10,7 @@ function Spaces() {
 
     function changeCategory(event) {
 
-        //set category and reset all tasks
-        // setTasks({ ...taskObject });
+        //set category to the category that was clicked
         setCategory(event.target.id);
 
 

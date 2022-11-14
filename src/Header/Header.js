@@ -12,9 +12,9 @@ function Header() {
 
 
 
-    // useEffect to use new state. set search term no lagging
+    // useEffect to use new state. set search term no lagging one character behind
     useEffect(() => {
-        if (searchTerm.length > 0) {
+        if (searchTerm !== null) {
             // from the tasks that are visible only
             setFilteredItems({
                 ...tasks,
