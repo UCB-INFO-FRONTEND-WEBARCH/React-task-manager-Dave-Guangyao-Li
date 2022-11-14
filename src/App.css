@@ -25,6 +25,20 @@ a:hover {
   font-weight: bold;
 }
 
+/* icon color */
+#inbox-icon {
+  color: blue;
+}
+
+#today-icon {
+  color: green;
+}
+
+#upcoming-icon {
+  color: purple;
+}
+
+
 /* grid layout */
 
 .grid-container {
@@ -252,6 +266,10 @@ main {
 
 #add-icon:hover {
   cursor: pointer;
+}
+
+#add-task:hover {
+  cursor: default;
 }
 
 

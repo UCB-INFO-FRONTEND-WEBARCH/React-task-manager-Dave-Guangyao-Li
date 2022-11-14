@@ -21,21 +21,21 @@ function Spaces() {
             <div class="left-nav-body">
                 <ul class="nav-items">
                     <li class="left-nav-item" >
-                        <span class="material-icons">inbox</span>
+                        <span id="inbox-icon" class="material-icons">inbox</span>
                         <span id="inbox" onClick={(e) => {
                             changeCategory(e);
                         }}>Inbox</span>
                         <span class="task-count">{incompleteTasks.inbox}</span>
                     </li>
                     <li class="left-nav-item">
-                        <span class="material-icons">today</span>
+                        <span id="today-icon" class="material-icons">today</span>
                         <span id="today" onClick={(e) => {
                             changeCategory(e);
                         }}>Today</span>
                         <span class="task-count">{incompleteTasks.today}</span>
                     </li>
                     <li class="left-nav-item">
-                        <span class="material-icons">upcoming</span>
+                        <span id="upcoming-icon" class="material-icons">upcoming</span>
                         <span id="upcoming" onClick={(e) => {
                             changeCategory(e);
                         }}>Upcoming</span>

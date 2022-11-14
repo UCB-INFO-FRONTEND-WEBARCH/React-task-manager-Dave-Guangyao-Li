@@ -30,7 +30,9 @@ function Tasks() {
 
     const addNewTask = (e) => {
         // add new task items into filteredItems list and return a new input field on page
-        const taskText = e.target.value;
+
+        const taskText = document.querySelector(".add-task").value;
+        console.log(taskText);
         const newTask = {
             id: filteredItems[category].length + 1,
             task: taskText,
@@ -83,7 +85,7 @@ function Tasks() {
         setFilteredItems(updatedData);
 
 
-        // store to local storage
+        // store new data to local storage
         localStorage.setItem("tasks", JSON.stringify(updatedData));
         console.log(localStorage.getItem("tasks"));
     }
@@ -112,14 +114,16 @@ function Tasks() {
                 }
 
                 <li class="new-task" >
-                    <span id="add-icon" class="material-icons">add</span>
+                    {/* watch for enter key */}
+
+                    <span id="add-icon" class="material-icons" onClick={addNewTask}>add</span>
                     <input type="text"
                         id="add-task"
                         class="add-task"
                         placeholder="Add task"
                         aria-label="add task"
-                        onClick={addNewTask}
                         autoFocus
+                        onKeyDown={e => e.key === 'Enter' && addNewTask(e)} // watch for enter key
                     >
                     </input>
                 </li>
