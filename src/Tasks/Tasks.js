@@ -120,7 +120,7 @@ function Tasks() {
                     <input type="text"
                         id="add-task"
                         class="add-task"
-                        placeholder="Add task"
+                        placeholder="Add task (type in, then click add icon or press enter)"
                         aria-label="add task"
                         autoFocus
                         onKeyDown={e => e.key === 'Enter' && addNewTask(e)} // watch for enter key
