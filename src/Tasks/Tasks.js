@@ -49,6 +49,9 @@ function Tasks() {
         // store to local storage
         localStorage.setItem("tasks", JSON.stringify(updatedData));
 
+        // clear the input field after adding a new task
+        document.querySelector(".add-task").value = "";
+
     }
 
     const editTask = (e) => {

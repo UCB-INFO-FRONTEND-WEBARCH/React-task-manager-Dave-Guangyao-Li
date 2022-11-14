@@ -260,7 +260,7 @@ main {
 
 .new-task>span {
   position: absolute;
-  top: 5px;
+  top: 12px;
   left: 15px;
 }
 
