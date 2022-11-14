@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { taskContext } from "../App";
+import { v4 as uuid } from 'uuid'; // generate a unique id
 
 function Tasks() {
 
@@ -14,7 +15,7 @@ function Tasks() {
             [category]: filteredItems[category].map(item => {
                 // console.log(typeof item.id);
                 // console.log(typeof e.target.id);
-                if (Number(item.id) === Number(e.target.id)) {
+                if (item.id === e.target.id) {
                     item.completed = !item.completed;
                 }
                 return item;
@@ -25,16 +26,22 @@ function Tasks() {
 
         // store to local storage
         localStorage.setItem("tasks", JSON.stringify(updatedData));
-        console.log(localStorage.getItem("tasks"));
+        // console.log(localStorage.getItem("tasks"));
     }
 
     const addNewTask = (e) => {
         // add new task items into filteredItems list and return a new input field on page
 
+        // new id
+        const unique_id = uuid();
+        const small_id = unique_id.slice(0, 8)
+
+        // task text from input field
         const taskText = document.querySelector(".add-task").value;
-        console.log(taskText);
+        // console.log(taskText);
         const newTask = {
-            id: filteredItems[category].length + 1,
+            // id: filteredItems[category].length + 1,
+            id: small_id,
             task: taskText,
             completed: false
         }
@@ -56,10 +63,14 @@ function Tasks() {
 
     const editTask = (e) => {
         // edit the task
+        // console.log(e.target.id);
+        // console.log(e.target.value);
+        // console.log(filteredItems[category][0].id);
+
         const updatedData = {
             ...filteredItems,
             [category]: filteredItems[category].map(item => {
-                if (Number(item.id) === Number(e.target.id)) {
+                if (item.id === e.target.id) {
                     item.task = e.target.value;
                 }
                 return item;
@@ -74,14 +85,18 @@ function Tasks() {
 
     const deleteTask = (e) => {
         //remove item from local storage
-        console.log(localStorage.getItem("tasks"));
-        localStorage.removeItem("tasks");
+        // console.log(localStorage.getItem("tasks"));
+        // localStorage.removeItem("tasks");
         // console.log(localStorage.getItem("tasks"));
         // delete the task
+
+
         const updatedData = {
             ...filteredItems,
             [category]: filteredItems[category].filter(item => {
-                return Number(item.id) !== Number(e.target.id);
+                // console.log(typeof item.id);
+                // console.log(typeof e.target.id);
+                return item.id !== e.target.id;
             })
         }
         setTasks(updatedData);
@@ -90,7 +105,7 @@ function Tasks() {
 
         // store new data to local storage
         localStorage.setItem("tasks", JSON.stringify(updatedData));
-        console.log(localStorage.getItem("tasks"));
+        // console.log(localStorage.getItem("tasks"));
     }
 
     return (
