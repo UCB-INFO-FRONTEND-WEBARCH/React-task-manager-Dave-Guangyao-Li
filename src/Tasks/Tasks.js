@@ -112,7 +112,7 @@ function Tasks() {
 
         <main class="main-navigaton grid-item-main-nav">
             <ul class="tasks">
-                <h1 class="list-title">Inbox</h1>
+                <h1 class="list-title">{category}</h1>
 
                 {
                     // list all filtered tasks of the current category
