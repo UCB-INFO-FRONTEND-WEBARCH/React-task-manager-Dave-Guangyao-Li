@@ -22,6 +22,7 @@ function Tasks() {
             })
         }
         setFilteredItems(updatedData);
+        setTasks(updatedData);
 
 
         // store to local storage

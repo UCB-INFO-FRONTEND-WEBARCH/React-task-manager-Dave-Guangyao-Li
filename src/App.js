@@ -37,14 +37,15 @@ function App() {
 
 
 
+  // update incomplete tasks count
   useEffect(() => {
     // filter out the completed tasks
     setIncompleteTasks({
-      inbox: filteredItems.inbox.filter(task => !task.completed).length,
-      today: filteredItems.today.filter(task => !task.completed).length,
-      upcoming: filteredItems.upcoming.filter(task => !task.completed).length,
+      inbox: tasks.inbox.filter(task => !task.completed).length,
+      today: tasks.today.filter(task => !task.completed).length,
+      upcoming: tasks.upcoming.filter(task => !task.completed).length,
     });
-  }, [filteredItems]);
+  }, [tasks]);
 
 
   return (
